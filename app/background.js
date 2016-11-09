@@ -1,7 +1,8 @@
 'use strict';
 
 chrome.runtime.onInstalled.addListener(details => {
-  console.log('previousVersion', details.previousVersion);
+  chrome.tabs.create({url: "http://google.com/"}, function (tab) {
+  });
 });
 
 chrome.browserAction.setBadgeText({text: '\'Allo'});
