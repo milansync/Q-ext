@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form action="" class="form-horizontal" role='form' name="DuplicateForm">
+  <div class="form-group">
+    <label for="" class="col-sm-2 control-label" style="margin-bottom:-10px"><b>Industry</b></label>
+  </div>
+  <select ng-model="AllotedToNew.selectIndustry" ng-change="AllotedToNew.selectedIndustry(AllotedToNew.selectIndustry)" ng-options="x as x.name for x in AllotedToNew.industry">
+  </select>
+  <span ng-repeat="tag in AllotedToNew.tags">{{tag}}</span>
+  <div type="submit" style="background-color:#7266ba;border-color:#7266ba;margin-left: 130px;margin-top: 20px"
+       ng-click="AllotedToNew.saveJob()" class="btn btn-primary ">Upload
+  </div>
+
+
+</form>
+</body>
+</html>

@@ -10,20 +10,31 @@
     <!-- endbuild -->
   </head>
   <body>
-    <h1>'Allo, 'Allo!</h1>
-    <iframe frameborder="no" src="https://partner.quezx.com/extension.html" id="iframe" width="0" height="0"></iframe>
+
+    <iframe frameborder="no" src="http://beta.qiosk.com/extension.html" id="iframe" width="0" height="0"></iframe>
+    <div ui-view class="col"></div>
     <!-- build:js scripts/popup-vendor.js -->
     <!-- bower:js -->
     <!-- endbower -->
     <!-- endbuild -->
+    <script src="lib/angular/lodash.min.js"></script>
     <script src="lib/angular/jquery.js"></script>
+    <script src="lib/bootstrap/js/bootstrap.min.js"></script>
     <script src="lib/angular/angular.js"></script>
     <script src="lib/angular/restangular.js"></script>
     <script src="lib/angular/angular-ui-router.js"></script>
+    <script src="lib/angular/ui-bootstrap-tpls.js"></script>
+    <script src="lib/angular/ng-file-upload.min.js"></script>
     <script src="lib/angular/angular-animate.js"></script>
     <script src="lib/angular/loading-bar.js"></script>
+    <script src="lib/angular/sweetalert.min.js"></script>
+    <script src="lib/angular/http-auth-interceptor.js"></script>
     <!-- build:js scripts/popup.js -->
     <script src="app/app.js"></script>
+    <script src="app/app.controller.js"></script>
+    <script src="app/select-article/select-article.js"></script>
+    <script src="app/select-article/select-article-controller.js"></script>
+    <script src="app/signin/signin.js"></script>
     <!-- endbuild -->
   </body>
 </html>

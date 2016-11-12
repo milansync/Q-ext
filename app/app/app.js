@@ -1,26 +1,28 @@
 /**
  * Created by SIF 2088 on 11/9/2016.
  */
-window.QUARC_API = 'https://qapi.quezx.com/api';
 
 var win = document.getElementsByTagName('iframe')[0].contentWindow;
 angular
-  .module('uiGenApp', [])
+  .module('uiGenApp', ['ui.bootstrap',
+    'restangular',
+    'ngFileUpload',
+    'ui.router',
+    'angular-loading-bar',
+    'http-auth-interceptor'
+  ])
 
-  .run(function ($window) {
+  .run(function ($window,$log,$state) {
     $window.onload = function () {
-      win.postMessage(JSON.stringify({keys: ['oauth', 'userinfo'], method: "get"}), "*");
+      win.postMessage(JSON.stringify({keys: ['auth_token', 'user_data'], method: "get"}), "*");
       $window.onmessage = function (e) {
-        var auth = {oauth: JSON.parse(e.data.oauth), userinfo: JSON.parse(e.data.userinfo)};
-        if (auth.oauth && auth.userinfo) {
-
-          $window.localStorage.oauth = e.data.oauth;
-          $window.localStorage.username = auth.userinfo.name;
-          $window.localStorage.user_id = auth.userinfo.id;
-          $window.localStorage.extswitch = auth.userinfo.extension_switch;
-          console.log('\'Allo \'Allo! Popup');
+        var auth = {auth_token: (e.data.auth_token), user_data: JSON.parse(e.data.user_data)};
+        if (auth.auth_token && auth.user_data) {
+          $window.localStorage.auth_token = e.data.auth_token;
+          $window.localStorage.user_data = e.data.user_data;
+          return $state.go('select-article');
         }
-        console.log('nope');
+        return $state.go('signin');
       };
     }
   });
